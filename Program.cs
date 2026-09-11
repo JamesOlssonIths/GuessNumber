@@ -97,16 +97,22 @@ class Program
     static int newMin = 1;
     static int newMax = 51;
     static void Hint(int randNumberAnswer)
-    {        
-        
-        int hintRandom = rnd.Next(newMin,newMax);
-        if(hintRandom > randNumberAnswer)
+    {
+        while (true)
         {
-            System.Console.WriteLine($"your number is lower then: {hintRandom}");
-            newMax = hintRandom;
+            int hintRandom = rnd.Next(newMin,newMax);
+            if(hintRandom >= randNumberAnswer)
+            {
+                System.Console.WriteLine($"your number is lower then: {hintRandom}");
+                System.Console.WriteLine();
+                newMax = hintRandom;
+                break;
+            }
+            System.Console.WriteLine($"your number is bigger then: {hintRandom}");
+            System.Console.WriteLine();
+            newMin = hintRandom;
+            break;
         }
-        System.Console.WriteLine($"your number is bigger then: {hintRandom}");
-        newMin = hintRandom;
     }
 
     static void ShowAnswer()
