@@ -120,4 +120,10 @@ class Program
         Console.WriteLine(randomNumberAnswer);
 
     }
+    static void YouWin()
+    {
+        System.Console.WriteLine("poop!!!");
+    }
+
+
 }
