@@ -100,19 +100,13 @@ class Program
     {        
         
         int hintRandom = rnd.Next(newMin,newMax);
-
         if(hintRandom > randNumberAnswer)
         {
             System.Console.WriteLine($"your number is lower then: {hintRandom}");
             newMax = hintRandom;
-            
         }
         System.Console.WriteLine($"your number is bigger then: {hintRandom}");
         newMin = hintRandom;
-           
-        
-
-
     }
 
     static void ShowAnswer()
