@@ -123,6 +123,7 @@ class Program
     static void YouWin()
     {
         System.Console.WriteLine("poop!!!");
+        System.Console.WriteLine("Nisse was here");
     }
 
 
