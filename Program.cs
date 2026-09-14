@@ -2,32 +2,33 @@
 
 class Program
 {
-    static Random rnd = new Random();
-    static int randomNumberAnswer =rnd.Next(1,51);
+    static Random rnd = new Random(); //Skapar en kopia/instans classen random och spara i variable rnd
+    static int randomNumberAnswer =rnd.Next(1,51); // sätter classens slumpade värde i int randomNumberAnswer
     static void Main()
     {
-        try
+        try // om något skulle bli fel hanterar vi det
         {
             Console.WriteLine("Guess The number");
-            Console.WriteLine("I will get a random number from 1 - 50; you will have to guess: ");
-            DisplayMenu();
-            while (true)
+            Console.WriteLine("I will get a random number from 1 - 50; you will have to guess: "); // text som bara körs en gång för att vissa att splet är igång
+            DisplayMenu(); // simple method för att vissa meny 
+            while (true) // en while function för att användare själv ska kunna välja när programet avlsutats
             {
-                string userInputChar = CheckInputChar();
-                switch (userInputChar)
+                string userInputChar = CheckInputChar(); // Spara värdet från CheckInputChar i userInputChar -CHC är en method som kollar att användaren har skickat in ett giltligt nummer
+                switch (userInputChar) // startar switch case där användarens input används för att avgöra vilket case vi ska till
                 {
-                    case "m": DisplayMenu();
+                    case "m": DisplayMenu(); // Visar upp menyn 
                     break;
-                    case "g":System.Console.Write("enter Guess: "); int userInputNumber = CheckInputNumber(); 
-                    Guess(userInputNumber, randomNumberAnswer);
+                    case "g":System.Console.Write("enter Guess: "); // visar användaren att det är dags att skicka in ett värde
+                    int userInputNumber = CheckInputNumber(); // spara in värdet vi får ut från checkinputnumber(en funktion som kollar så värdet användare skickar in är korrekt)
+                    Guess(userInputNumber, randomNumberAnswer); // skickar in det värdet som användaren skrivit in samt det slumpade värdet som är tillgängligt överallt in i methoden Guess
                     break;
-                    case "h": Hint(randomNumberAnswer);
+                    case "h": Hint(randomNumberAnswer); // skickar in det slumpade värdet i hint randomNumberAnswer = svaret på spelet
                     break;
-                    case "a": ShowAnswer();
+                    case "a": ShowAnswer(); // kanska självklart visar randomNumberAnswer hade kunnat vara Console.WriteLine("randomNumberAnswer"); egentligen
                     break;
-                    case "x": Environment.Exit(0);
+                    case "x": Environment.Exit(0); // avslutar programet
                     break;
-                    default: System.Console.WriteLine("enter a vaild option in the menu");
+                    default: System.Console.WriteLine("enter a vaild option in the menu"); // om inget av m,g,h,a,x har skickats in ber vi användaren att skicka in ett giltligt val
                     break;
                 }
                 //Guess(randomNumberAnswer, userInputNumber);
@@ -36,9 +37,9 @@ class Program
 
             }
         }
-        catch(Exception ex)
+        catch(Exception ex) // hit alla throws skicka och om det skulle bli fel i try
         {
-            System.Console.WriteLine(ex.Message);
+            System.Console.WriteLine(ex.Message); // Ex = det värdet som Exception ger. Så det som skrivs ut är det meddlande/fel Exception ger. 
         }
     }
     static int CheckInputNumber()
@@ -51,7 +52,7 @@ class Program
         if(userInput < 1 || userInput > 50)
         {
             throw new Exception("Skriv in ett heltal mellan 1-50");
-            //självklart kan ändra till att användare inte blir utkastad men ser ingen anledning till det
+            //självklart kan ändra till att användare inte blir utkastad men ser ingen anledning till det (detta är lättare)
         }
         return userInput;  
     }
@@ -123,7 +124,7 @@ class Program
     static void YouWin()
     {
         System.Console.WriteLine("poop!!!");
-        System.Console.WriteLine("Nisse was here");
+
     }
 
 
